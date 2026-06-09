@@ -1,0 +1,81 @@
+// growi-plugin-theme-green
+// Clean green & white theme inspired by academic lab aesthetics
+
+:root[data-bs-theme] {
+  // -------------------------------------------------------
+  // Stage 1: Import GROWI core styles and Bootstrap theming
+  // -------------------------------------------------------
+  @import '@growi/core-styles/scss/bootstrap/init-stage-1';
+  @import '@growi/core-styles/scss/bootstrap/theming/variables';
+  @import '@growi/core-styles/scss/bootstrap/theming/utils/color-palette';
+
+  // -------------------------------------------------------
+  // Color definitions
+  // Forest green as primary, lighter green as highlight
+  // -------------------------------------------------------
+  $primary:   #2d7a4f;   // forest green — buttons, active links, focus rings
+  $highlight: #4aab78;   // lighter green — highlights, selections, hover states
+  $secondary: #6c757d;   // neutral gray — secondary elements (Bootstrap default)
+
+  // Generate full color palettes (100-900 scale)
+  @include generate-color-palette('primary',   $primary,   #1a2e22, #f0faf4, 18%, 22%);
+  @include generate-color-palette('highlight', $highlight, #1a3d2b, #eafaf2, 20%, 25%);
+
+  // -------------------------------------------------------
+  // Base layout colors
+  // -------------------------------------------------------
+  $body-bg:        #ffffff;   // white main background
+  $body-color:     #2c2c2c;   // near-black text for readability
+  $link-color:     $primary;
+  $link-hover-color: darken($primary, 10%);
+
+  // -------------------------------------------------------
+  // Stage 2: Apply Bootstrap variables and GROWI init
+  // -------------------------------------------------------
+  @import 'bootstrap/scss/variables';
+  @import 'bootstrap/scss/variables-dark';
+  @import '@growi/core-styles/scss/bootstrap/init-stage-2';
+  @import '@growi/core-styles/scss/bootstrap/theming/apply-light';
+
+  // -------------------------------------------------------
+  // GROWI-specific CSS variable overrides
+  // -------------------------------------------------------
+
+  // Sidebar: very light green tint
+  --grw-sidebar-bg:               #eaf4ee;
+  --grw-sidebar-nav-btn-color:    var(--grw-primary-500);
+  --grw-sidebar-nav-btn-bg-hover: #d0ebda;
+
+  // Navigation bar: white with green accent border
+  --grw-navbar-bg:                #ffffff;
+  --grw-navbar-border-color:      #c8e6d0;
+
+  // Page editor / content area
+  --grw-editor-bg:                #ffffff;
+
+  // Table of contents
+  --grw-toc-link-color:           var(--grw-primary-600);
+
+  // Buttons: green fill
+  --bs-btn-bg:                    var(--grw-primary-500);
+  --bs-btn-border-color:          var(--grw-primary-600);
+  --bs-btn-hover-bg:              var(--grw-primary-600);
+
+  // Inline code & code blocks: light mint background
+  --grw-code-bg:                  #f0faf4;
+  --grw-code-color:               #1e5c38;
+
+  // Search highlight
+  --grw-search-highlight-bg:      #b2f0cd;
+
+  // Tags
+  --grw-tag-bg:                   #d4edda;
+  --grw-tag-color:                var(--grw-primary-700);
+
+  // Page header border
+  --grw-page-header-border-color: #c8e6d0;
+
+  // Footer
+  --grw-footer-bg:                #f5fbf7;
+  --grw-footer-color:             #4a7860;
+}
